@@ -1,8 +1,11 @@
 <h2>Products</h2>
 
-<div *ngFor="let product of products; trackBy: trackByProducts">
+<div *ngFor="let product of products; index as productId; trackBy: trackByProducts">
   <h3>
-    <a [title]="product.name + ' details'">{{ product.name }}</a>
+    <a
+      [title]="product.name + ' details'"
+      [routerLink]="['/products', productId]"
+    >{{ product.name }} id:{{productId}}</a>
   </h3>
   <p *ngIf="product.description">Description: {{ product.description }}</p>
   <button (click)="share()">Share</button>
